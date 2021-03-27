@@ -21,8 +21,12 @@ let cityData = cities;
 // Loop through the cities array and create one marker for each city.
 cityData.forEach(function(city) {
     console.log(city)
-    L.marker(city.location)
-    .bindPopup("<h2>" + city.city + ", " + city.state + "</h2> <hr> <h3>Population " + city.population + "</h3>")   
+    L.circleMarker(city.location, {
+    color: "orange",
+    fillColor: '#fffa1',
+        radius: city.population/100000
+    })
+    .bindPopup("<h2>" + city.city + ", " + city.state + "</h2> <hr> <h3>Population " + city.population.toLocaleString() + "</h3>")   
   .addTo(map);
 });
 // We create the tile layer that will be the background of our map.
